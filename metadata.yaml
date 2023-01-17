@@ -5,16 +5,13 @@ author: Bhuwan Prasad Upadhyay
 subject: "Sample"
 keywords: [sample-book,programming]
 language: en-US
-# cover-image: img/book-cover.png
 lof: true
 lof-own-page: true
 toc-own-page: true
 titlepage: true
-# titlepage-background: backgrounds/background10.pdf
 titlepage-text-color: "333333"
 titlepage-rule-color: "00737C"
 papersize: letter
-# prepend-titlepage: img/book-cover.pdf
 colorlinks: true
 listings: true
 ---

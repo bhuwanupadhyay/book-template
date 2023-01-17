@@ -2,31 +2,36 @@
 set -e
 
 echo "##"
-echo "# building books"
+echo "# building book"
 echo "##"
 echo ""
 
+rm -rf build/
+mkdir -p build/
+
+compile_epub() {
+    pandoc \
+        --filter pandoc-crossref \
+        --css templates/epub.css \
+        --toc -N \
+        -o build/output.epub \
+        metadata.yaml \
+        markdown/*/*.md
+}
 
 compile_pdf() {
-    draft_dir="${1%.*}"
-    echo "Book Draft Dir: $draft_dir"
-    mkdir -p build/$draft_dir/pdf/
     pandoc \
+        --pdf-engine=xelatex \
         --template=./templates/eisvogel.tex \
         --from markdown \
         --toc -N \
         --listings \
         --filter pandoc-crossref \
         --lua-filter=./templates/pagebreak.lua \
-        -o build/$draft_dir/pdf/output.pdf \
-        $draft_dir/metadata.yaml \
-        $draft_dir/*/*.md
-    # --top-level-division=chapter \
-    # -V book \
-
+        -o build/output.pdf \
+        metadata.yaml \
+        markdown/*/*.md
 }
 
-for f in *.draft; do
-    echo "Book Name: $f"
-    compile_pdf "$f"
-done
+compile_pdf
+compile_epub
