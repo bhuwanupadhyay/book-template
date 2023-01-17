@@ -1,6 +1,6 @@
-# Book Drafts
+# Book Draft
 
-This repository is a small collection of personal drafted books using Pandoc.
+This repository is a pandoc-markdown-template for draft book.
 
 ## Requirements
 
